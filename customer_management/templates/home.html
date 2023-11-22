@@ -3,6 +3,37 @@
 
 {% block content %}
 
-<h1>Welcome to Home page</h1>
+{% if user.is_authenticated %}
+{% if records %}
+    
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">ZipCode</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{ record.first_name }}</td>
+            <td>{{ record.last_name }}</td>
+            <td>{{ record.email }}</td>
+            <td>{{ record.phone }}</td>
+            <td>{{ record.address }}</td>
+            <td>{{ record.city }}</td>
+            <td>{{ record.zipcode }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>    
+{% endif %}
 
+{% endif %}
 {% endblock %}  
