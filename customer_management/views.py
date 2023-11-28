@@ -54,4 +54,10 @@ def home(request):
     return render(request, 'home.html', {'records':records})
 
 
-
+def show_record(request, pk):
+    if request.user.is_authenticated:
+        show_record = Record.objects.get(id=pk)
+        return render (request, 'show_record.html', {'show_record':show_record})
+    else:
+        messages.success(request, " You must be login ")
+        return redirect('home')
