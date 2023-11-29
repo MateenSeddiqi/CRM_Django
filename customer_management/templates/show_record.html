@@ -5,12 +5,23 @@
 
 <h1>Customer Record </h1>
 
-    {{ show_record.id }} <br>
-    {{ show_record.first_name }} <br>
-    {{ show_record.last_name }} <br>
-    {{ show_record.email }} <br>
-    {{ show_record.phone }} <br>
-    {{ show_record.address }} <br>
-    {{ show_record.zipcode }} <br>
+<div class="card">
+  <div class="card-header">
+    <strong>{{ show_record.first_name }} {{ show_record.last_name }} </strong>
+  </div>
 
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Email: </strong>{{ show_record.email }} <br>
+      <strong>Phone: </strong>{{ show_record.phone }} <br>
+      <strong>Address: </strong>{{ show_record.address }} <br>
+      <strong>ZipCode: </strong>{{ show_record.zipcode }} <br>
+      <strong>ID: </strong>{{ show_record.id }}
+    </p>
+  </div>
+</div>
+
+<a href="{% url 'home' %}"><button class="btn btn-secondary">Back</button></a>
+<a href="{% url 'delete_record' show_record.id %}"><button class="btn btn-danger">Delete</button></a>
 {% endblock %}
+
