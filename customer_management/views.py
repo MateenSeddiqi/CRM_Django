@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
@@ -25,7 +26,7 @@ def login_user(request):
     else:
         return render(request, 'login.html', {})
 
-
+@login_required
 def logout_user(request):
     logout(request)
     messages.success(request, "You are logout ")
@@ -48,12 +49,12 @@ def signup(request):
         return render(request, 'signup.html', {'form':form})
     return render(request, 'signup.html', {'form':form})
 
-
+@login_required
 def home(request):
     records= Record.objects.all()
     return render(request, 'home.html', {'records':records})
 
-
+@login_required
 def show_record(request, pk):
     if request.user.is_authenticated:
         show_record = Record.objects.get(id=pk)
@@ -62,6 +63,7 @@ def show_record(request, pk):
         messages.success(request, " You must be login ")
         return redirect('home')
 
+@login_required
 def delete_record(request, pk):
     if request.user.is_authenticated:
         delete_it = Record.objects.get(id=pk)
@@ -72,6 +74,7 @@ def delete_record(request, pk):
         messages.success(request, "You must be login ")
         return redirect('home')
 
+@login_required
 def add_record(request):
     form = AddRecordForm(request.POST or None)
     if request.user.is_authenticated:
@@ -85,6 +88,7 @@ def add_record(request):
         messages.success(request, "You Must login ")
         return redirect('login_user')
 
+@login_required
 def update_record(request, pk):
     if request.user.is_authenticated:
         updateRecord= Record.objects.get(id=pk)

@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block content %}
- 
-<div class="col-md-6 offset-md-3">
-
-<h2>Welcome to the CRM App </h2>
-<a href="{% url 'login_user' %}"><h4>Login</h4></a>
-<a href="{% url 'signup' %}"><h4>Signup</h4></a>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Welcome to the CRM App</h2>
+            <a href="{% url 'login_user' %}" class="btn btn-primary btn-lg">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-success btn-lg">Signup</a>
+        </div>
+    </div>
 </div>
-{% endblock %}  
+{% endblock %}
