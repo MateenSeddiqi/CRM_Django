@@ -6,7 +6,7 @@
 
 <h2>Add Record</h2>
 
-form method="POST" action="{% url 'add_record' %}">
+<form method="POST" action="{% url 'add_record' %}">
     {% csrf_token %}
 
         {{ form.as_p }}
