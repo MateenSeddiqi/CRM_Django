@@ -1,43 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'home' %}">CRM</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout_user' %}">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'add_record' %}">Add Record</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login_user' %}">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
-        </li>
-        {% endif %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+          <i class="fas fa-chart-line fa-2x mr-2"></i>
+          <span class="h4 mb-0">CRM</span>
+      </a>
 
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li> -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
 
-      </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-    </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link hover:bg-primary-700 transition-colors duration-300 px-3 py-2 rounded" href="{% url 'add_record' %}">
+                      <i class="fas fa-plus-circle mr-2"></i>Add Record
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link hover:bg-primary-700 transition-colors duration-300 px-3 py-2 rounded" href="{% url 'logout_user' %}">
+                      <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                  </a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                  <a class="nav-link hover:bg-primary-700 transition-colors duration-300 px-3 py-2 rounded" href="{% url 'login_user' %}">
+                      <i class="fas fa-sign-in-alt mr-2"></i>Login
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link hover:bg-primary-700 transition-colors duration-300 px-3 py-2 rounded" href="{% url 'signup' %}">
+                      <i class="fas fa-user-plus mr-2"></i>Signup
+                  </a>
+              </li>
+              {% endif %}
+          </ul>
+      </div>
+  </div>
 </nav>
