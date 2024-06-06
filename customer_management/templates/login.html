@@ -2,28 +2,36 @@
 {% load static %}
 
 {% block content %}
- 
-<div class="col-md-6 offset-md-3">
-{% if user.is_authenticated %}
-
-<h2>Already Login </h2>
-
-{% else %}
-
-  <h2>Login</h2> 
-  <form method="POST" action="{% url 'login_user' %}">
-    {% csrf_token %}
-        <div class="form-group">
-          <label for="exampleInputEmail1">User Name</label>
-          <input type="text" class="form-control" name="username"  placeholder="Enter username" required>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {% if user.is_authenticated %}
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-5">
+                    <h2 class="card-title mb-4">Welcome Back!</h2>
+                    <p class="card-text">You are currently logged in. You can now access your account and perform various actions.</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-5">
+                    <h2 class="card-title mb-4">Login to Your Account</h2>
+                    <form method="POST" action="{% url 'login_user' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" name="password"  placeholder="password" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-  </form> 
+    </div>
 </div>
-
-{% endif %}
-{% endblock %}  
+{% endblock %}
