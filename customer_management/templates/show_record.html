@@ -2,27 +2,46 @@
 {% load static %}
 
 {% block content %}
-
-<h1>Customer Record </h1>
-
-<div class="card">
-  <div class="card-header">
-    <strong>{{ show_record.first_name }} {{ show_record.last_name }} </strong>
-  </div>
-
-  <div class="card-body">
-    <p class="card-text">
-      <strong>Email: </strong>{{ show_record.email }} <br>
-      <strong>Phone: </strong>{{ show_record.phone }} <br>
-      <strong>Address: </strong>{{ show_record.address }} <br>
-      <strong>ZipCode: </strong>{{ show_record.zipcode }} <br>
-      <strong>ID: </strong>{{ show_record.id }}
-    </p>
+<div class="container my-3">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h1 class="card-title mb-0">Customer Record</h1>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="card-text">
+                <strong>Name:</strong> {{ show_record.first_name }} {{ show_record.last_name }}
+              </p>
+              <p class="card-text">
+                <strong>Email:</strong> {{ show_record.email }}
+              </p>
+              <p class="card-text">
+                <strong>Phone:</strong> {{ show_record.phone }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text">
+                <strong>Address:</strong> {{ show_record.address }}
+              </p>
+              <p class="card-text">
+                <strong>Zipcode:</strong> {{ show_record.zipcode }}
+              </p>
+              <p class="card-text">
+                <strong>ID:</strong> {{ show_record.id }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+          <a href="{% url 'home' %}" class="btn btn-secondary mr-2">Back</a>
+          <a href="{% url 'delete_record' show_record.id %}" class="btn btn-danger mr-2">Delete</a>
+          <a href="{% url 'update_record' show_record.id %}" class="btn btn-primary">Update</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<a href="{% url 'home' %}"><button class="btn btn-secondary">Back</button></a>
-<a href="{% url 'delete_record' show_record.id %}"><button class="btn btn-danger">Delete</button></a>
-<a href="{% url 'update_record' show_record.id %}"><button class="btn btn-primary">Update</button></a>
 {% endblock %}
-
