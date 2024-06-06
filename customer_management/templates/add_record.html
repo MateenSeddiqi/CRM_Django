@@ -2,17 +2,33 @@
 {% load static %}
 
 {% block content %}
-<div class="col-md-6 offset-md-3">
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="text-primary mb-4">Add Record</h2>
 
-<h2>Add Record</h2>
+                    <form method="POST" action="{% url 'add_record' %}">
+                        {% csrf_token %}
 
-<form method="POST" action="{% url 'add_record' %}">
-    {% csrf_token %}
+                        <div class="form-group">
+                            {% for field in form %}
+                            <div class="mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                            {% endfor %}
+                        </div>
 
-        {{ form.as_p }}
-
-        <button type="submit" class="btn btn-primary">Add Record</button>
-        <a href="{% url 'home' %}"><button class="btn btn-secondary">Back</button></a>
-</form> 
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary mr-3">Add Record</button>
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary">Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-{% endblock %}  
+{% endblock %}
