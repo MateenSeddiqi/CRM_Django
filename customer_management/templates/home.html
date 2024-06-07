@@ -7,38 +7,45 @@
 <div class="container my-5">
   <div class="card shadow-sm">
       <div class="card-body">
-          <h2 class="text-primary mb-4">Records</h2>
+          <h2 class="text-primary mb-4">Users Record</h2>
 
           <div class="table-responsive">
-              <table class="table table-hover">
-                  <thead class="bg-primary text-white">
-                      <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">First Name</th>
-                          <th scope="col">Last Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Phone</th>
-                          <th scope="col">Address</th>
-                          <th scope="col">ZipCode</th>
-                      </tr>
-                  </thead>
-                  {% if records %}
-                  <tbody>
-                      {% for record in records %}
-                      <tr class="hover:bg-gray-100 transition-colors duration-300">
-                          <th> <a href="{% url 'show_record' record.id %}" class="text-primary hover:text-primary-700 transition-colors duration-300"> {{ record.id }} </a></th>
-                          <td>{{ record.first_name }}</td>
-                          <td>{{ record.last_name }}</td>
-                          <td>{{ record.email }}</td>
-                          <td>{{ record.phone }}</td>
-                          <td>{{ record.address }}</td>
-                          <td>{{ record.zipcode }}</td>
-                      </tr>
-                      {% endfor %}
-                  </tbody>
-                  {% endif %}
-              </table>
-          </div>
+            <table class="table table-hover">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">ZipCode</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                {% if records %}
+                <tbody>
+                    {% for record in records %}
+                    <tr class="hover:bg-gray-100 transition-colors duration-300">
+                        <th> <a href="{% url 'show_record' record.id %}" class="text-primary hover:text-primary-700 transition-colors duration-300"> {{ record.id }} </a></th>
+                        <td>{{ record.first_name }}</td>
+                        <td>{{ record.last_name }}</td>
+                        <td>{{ record.email }}</td>
+                        <td>{{ record.phone }}</td>
+                        <td>{{ record.address }}</td>
+                        <td>{{ record.zipcode }}</td>
+                        <td>
+                            <a href="{% url 'update_record' record.id %}" class="btn btn-primary btn-sm mr-2">Edit</a>
+                            <a href="{% url 'delete_record' record.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+  
       </div>
   </div>
 </div>
